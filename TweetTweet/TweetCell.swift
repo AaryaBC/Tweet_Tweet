@@ -15,6 +15,11 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var tweetImage: UIImageView!
     @IBOutlet weak var tweetTime: UILabel!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteCountLabel: UILabel!
+    @IBOutlet weak var retweetCountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         tweetImage.layer.cornerRadius = 5

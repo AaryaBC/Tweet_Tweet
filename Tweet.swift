@@ -15,9 +15,15 @@ class Tweet: NSObject {
     var favoritesCount: Int = 0
     var user: NSDictionary!
     var profileImageURL: URL?
+    var favorited: Bool?
+    var retweeted: Bool?
+    var id_str: String?
+    var current_user_retweet: Tweet?
+    var retweeted_status: Tweet?
     
     init(dictionary: NSDictionary){
         text = dictionary["text"] as? String
+        id_str = dictionary["id_str"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount = (dictionary["favourites_count"] as? Int) ?? 0
         let timeStampString = dictionary["created_at"] as? String
@@ -32,6 +38,24 @@ class Tweet: NSObject {
             self.profileImageURL = profileImageURL
         } else {
             self.profileImageURL = nil
+        }
+        self.retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
+        self.favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
+        self.favorited = dictionary["favorited"] as? Bool
+        self.retweeted = dictionary["retweeted"] as? Bool
+        let current_user_retweet_dict = (dictionary["current_user_retweet"] as? NSDictionary)
+        if current_user_retweet_dict != nil {
+            current_user_retweet = Tweet(dictionary: current_user_retweet_dict!)
+        } else {
+            current_user_retweet = nil
+        }
+        retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
+        retweeted = dictionary["retweeted"] as? Bool
+        let retweeted_status_dict = (dictionary["retweeted_status"] as? NSDictionary) ?? nil
+        if retweeted_status_dict != nil {
+            retweeted_status = Tweet(dictionary: retweeted_status_dict!)
+        } else {
+            retweeted_status = nil
         }
     }
     

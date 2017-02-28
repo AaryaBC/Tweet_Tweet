@@ -19,6 +19,9 @@
 		CA9A17041E6347D300F65504 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9A17031E6347D300F65504 /* TweetsViewController.swift */; };
 		CA9A17061E634E3E00F65504 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9A17051E634E3E00F65504 /* TweetCell.swift */; };
 		CA9A17081E64CD8000F65504 /* twitter_image.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9A17071E64CD8000F65504 /* twitter_image.png */; };
+		CA9A170A1E64FE6100F65504 /* retweet-512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9A17091E64FE6100F65504 /* retweet-512.png */; };
+		CA9A170D1E64FF9400F65504 /* star-511.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9A170B1E64FF9400F65504 /* star-511.png */; };
+		CA9A170E1E64FF9400F65504 /* star-512.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9A170C1E64FF9400F65504 /* star-512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		CA9A17031E6347D300F65504 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		CA9A17051E634E3E00F65504 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		CA9A17071E64CD8000F65504 /* twitter_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_image.png; sourceTree = "<group>"; };
+		CA9A17091E64FE6100F65504 /* retweet-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweet-512.png"; sourceTree = "<group>"; };
+		CA9A170B1E64FF9400F65504 /* star-511.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-511.png"; sourceTree = "<group>"; };
+		CA9A170C1E64FF9400F65504 /* star-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,9 @@
 		CA76351A1E5CB9DD00E7EBFC /* TweetTweet */ = {
 			isa = PBXGroup;
 			children = (
+				CA9A17091E64FE6100F65504 /* retweet-512.png */,
+				CA9A170B1E64FF9400F65504 /* star-511.png */,
+				CA9A170C1E64FF9400F65504 /* star-512.png */,
 				CA9A17071E64CD8000F65504 /* twitter_image.png */,
 				CA76351B1E5CB9DD00E7EBFC /* AppDelegate.swift */,
 				CA76351F1E5CB9DD00E7EBFC /* Main.storyboard */,
@@ -195,7 +204,10 @@
 				CA7635261E5CB9DD00E7EBFC /* LaunchScreen.storyboard in Resources */,
 				CA9A17081E64CD8000F65504 /* twitter_image.png in Resources */,
 				CA7635231E5CB9DD00E7EBFC /* Assets.xcassets in Resources */,
+				CA9A170D1E64FF9400F65504 /* star-511.png in Resources */,
+				CA9A170E1E64FF9400F65504 /* star-512.png in Resources */,
 				CA7635211E5CB9DD00E7EBFC /* Main.storyboard in Resources */,
+				CA9A170A1E64FE6100F65504 /* retweet-512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

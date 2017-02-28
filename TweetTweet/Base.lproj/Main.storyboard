@@ -69,12 +69,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvG-S7-aKq">
-                                                    <rect key="frame" x="71" y="4" width="51.5" height="17"/>
+                                                    <rect key="frame" x="71" y="4" width="52" height="17"/>
                                                     <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="700" verticalHuggingPriority="700" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-hG-oX1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-hG-oX1">
                                                     <rect key="frame" x="71" y="23" width="288" height="15"/>
                                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -93,26 +93,63 @@
                                                     <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKO-B3-NPW">
-                                                    <rect key="frame" x="71" y="46" width="42" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKO-B3-NPW">
+                                                    <rect key="frame" x="71" y="42" width="16" height="22"/>
+                                                    <state key="normal" image="retweet-512.png"/>
+                                                    <connections>
+                                                        <action selector="Retweet:" destination="QHo-yq-Uek" eventType="touchUpInside" id="gML-mN-0tb"/>
+                                                    </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOA-D1-5W4">
+                                                    <rect key="frame" x="343" y="42" width="16" height="22"/>
+                                                    <state key="normal" image="star-511.png"/>
+                                                    <connections>
+                                                        <action selector="favorite:" destination="QHo-yq-Uek" eventType="touchUpInside" id="RuJ-TB-Z20"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-Hv-dR9">
+                                                    <rect key="frame" x="99" y="46" width="6" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpO-FI-V93">
+                                                    <rect key="frame" x="333" y="46" width="6" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="OKO-B3-NPW" secondAttribute="bottom" constant="12" id="5q5-Zn-P25"/>
+                                                <constraint firstItem="OKO-B3-NPW" firstAttribute="top" secondItem="TB9-hG-oX1" secondAttribute="bottom" constant="4" id="9uI-vD-7k4"/>
                                                 <constraint firstAttribute="trailing" secondItem="411-F4-ife" secondAttribute="trailing" constant="8" id="AuL-PT-x1F"/>
                                                 <constraint firstItem="TB9-hG-oX1" firstAttribute="top" secondItem="411-F4-ife" secondAttribute="bottom" constant="2" id="Cxh-GI-KM4"/>
                                                 <constraint firstItem="Bfb-wR-Gvt" firstAttribute="top" secondItem="o6T-qc-IJO" secondAttribute="top" constant="4" id="GQ0-On-I2F"/>
                                                 <constraint firstItem="411-F4-ife" firstAttribute="top" secondItem="o6T-qc-IJO" secondAttribute="top" id="I4J-i2-t7J"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="lpO-FI-V93" secondAttribute="bottom" constant="12" id="NBt-nf-n9L"/>
+                                                <constraint firstItem="mOA-D1-5W4" firstAttribute="leading" secondItem="lpO-FI-V93" secondAttribute="trailing" constant="4" id="RWY-Sr-orv"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="oWy-Hv-dR9" secondAttribute="bottom" constant="12" id="S9k-O2-Bcn"/>
+                                                <constraint firstItem="mOA-D1-5W4" firstAttribute="top" secondItem="TB9-hG-oX1" secondAttribute="bottom" constant="4" id="Uv2-tU-Ygo"/>
+                                                <constraint firstItem="oWy-Hv-dR9" firstAttribute="top" secondItem="TB9-hG-oX1" secondAttribute="bottom" constant="8" id="aG2-ap-gT0"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="TB9-hG-oX1" secondAttribute="trailing" constant="8" id="chj-eY-lgC"/>
                                                 <constraint firstItem="TvG-S7-aKq" firstAttribute="top" secondItem="o6T-qc-IJO" secondAttribute="top" constant="4" id="cnx-FR-hrk"/>
                                                 <constraint firstItem="Bfb-wR-Gvt" firstAttribute="leading" secondItem="o6T-qc-IJO" secondAttribute="leading" constant="8" id="dUE-AP-dos"/>
                                                 <constraint firstItem="TB9-hG-oX1" firstAttribute="top" secondItem="TvG-S7-aKq" secondAttribute="bottom" constant="2" id="hNv-O9-AQ1"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="mOA-D1-5W4" secondAttribute="bottom" constant="12" id="m8P-Zc-Vox"/>
+                                                <constraint firstItem="oWy-Hv-dR9" firstAttribute="leading" secondItem="OKO-B3-NPW" secondAttribute="trailing" constant="12" id="ncR-W3-RPH"/>
+                                                <constraint firstItem="OKO-B3-NPW" firstAttribute="leading" secondItem="Bfb-wR-Gvt" secondAttribute="trailing" constant="8" id="qkX-ef-LaC"/>
                                                 <constraint firstItem="TvG-S7-aKq" firstAttribute="leading" secondItem="Bfb-wR-Gvt" secondAttribute="trailing" constant="8" id="qvE-E8-ru9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mOA-D1-5W4" secondAttribute="trailing" constant="8" id="sdp-TG-YHL"/>
                                                 <constraint firstItem="TB9-hG-oX1" firstAttribute="leading" secondItem="Bfb-wR-Gvt" secondAttribute="trailing" constant="8" id="yem-6K-5cr"/>
+                                                <constraint firstItem="lpO-FI-V93" firstAttribute="top" secondItem="TB9-hG-oX1" secondAttribute="bottom" constant="8" id="zhz-kD-QFE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="mOA-D1-5W4" id="JzF-7f-gIu"/>
+                                            <outlet property="favoriteCountLabel" destination="lpO-FI-V93" id="zdF-4a-zdb"/>
+                                            <outlet property="retweetButton" destination="OKO-B3-NPW" id="BhN-ef-rVH"/>
+                                            <outlet property="retweetCountLabel" destination="oWy-Hv-dR9" id="WUM-Ug-GfD"/>
                                             <outlet property="tweetImage" destination="Bfb-wR-Gvt" id="31L-lT-fGh"/>
                                             <outlet property="tweetLabel" destination="TB9-hG-oX1" id="bKs-kl-HPV"/>
                                             <outlet property="tweetTime" destination="411-F4-ife" id="Zu6-pj-7HF"/>
@@ -159,6 +196,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="retweet-512.png" width="16" height="16"/>
+        <image name="star-511.png" width="16" height="16"/>
         <image name="twitter_image.png" width="405" height="405"/>
     </resources>
 </document>

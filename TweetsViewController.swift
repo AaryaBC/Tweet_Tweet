@@ -13,6 +13,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     var tweets: [Tweet]!
     var tweeterImage: URL?
     @IBOutlet weak var tableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -47,6 +49,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         if let timestamp = tweet.timeStamp {
             cell.tweetTime.text = TwitterClient.tweetTimeFormatted(timestamp: timestamp)
         }
+        cell.favoriteCountLabel.text = "\(tweet.favoritesCount)"
+        cell.retweetCountLabel.text = "\(tweet.retweetCount)"
         return cell
     }
     
@@ -60,17 +64,72 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    
+    @IBAction func favorite(_ sender: Any){
+        let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: buttonPosition)
+        let tweet = tweets?[(indexPath?.row)!]
+        if (tweet?.favorited!)! {
+            TwitterClient.sharedInstance?.unfavorite(tweet: tweet!, success: { (tweet: Tweet) -> () in
+                TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("unfavorited")
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+            })
+        } else {
+            TwitterClient.sharedInstance?.favorite(tweet: tweet!, success: { (tweet: Tweet) -> () in
+                TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("favorited")
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+            })
+        }
+    }
+    
+    
+    
+    @IBAction func Retweet(_ sender: Any) {
+        let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: buttonPosition)
+        let tweet = tweets?[(indexPath?.row)!]
+        if (tweet?.retweeted!)! {
+            TwitterClient.sharedInstance?.unretweet(tweet: tweet!, success: { (tweet: Tweet) -> () in
+            TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("unretweeted")
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+            })
+        } else {
+            TwitterClient.sharedInstance?.retweet(tweet: tweet!, success: { (tweet: Tweet) -> () in
+            TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                }, failure: { (error: Error) -> () in
+                    print(error.localizedDescription)
+                })
+                print("retweeted")
+            }, failure: { (error: Error) -> () in
+                print(error.localizedDescription)
+            })
+        }
+    }
+    
     @IBAction func onLogoutButton(_ sender: Any) {
         TwitterClient.sharedInstance?.logout()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
