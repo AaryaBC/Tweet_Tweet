@@ -32,8 +32,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
             self.screenname = currUser.screenName!
             self.userNameLabel.text = currUser.name!
-            self.followerCount.text = "\(currUser.followers_count!)"
-            self.followingCount.text = "\(currUser.following_count!)"
+        self.followerCount.text = "\(currUser.followers_count!)" + " followers"
+            self.followingCount.text = "\(currUser.following_count!)" + " following"
             self.handleLabel.text = "@" + currUser.screenName!
             
             self.profilePic.setImageWith(currUser.profileUrl! as URL)
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 print ("no header available")
             }
-            self.tweetCountLabel.text = "\(currUser.tweetCount!)"
+            self.tweetCountLabel.text = "\(currUser.tweetCount!)" + " tweets"
         
         
         print(self.screenname!)
