@@ -157,5 +157,18 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             detailVC.tweet = tweet
             
         }
+        else if segue.identifier == "profileId"{
+            let detailVC = segue.destination as! ProfileViewController
+            detailVC.currUser = User._currentUser
+
+        }
+//        else if segue.identifier == "tweetsToOtherProfileVCSegue" {
+//            let userButton = sender! as! UIButton
+//            let tweet = tweets[userButton.tag]
+//            
+//            let nav = segue.destination as! UINavigationController     // avoids "could not cast value of type UINavCTRLr to xViewCTRLr" errors
+//            let otherProfileVC = nav.topViewController as! OtherProfileViewController
+//            otherProfileVC.tweet = tweet
+//        }
     }
 }

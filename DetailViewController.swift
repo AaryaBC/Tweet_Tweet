@@ -11,10 +11,10 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var profilepicView: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UIButton!
     
     var tweet: Tweet!
     
@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         profilepicView.layer.cornerRadius = 5
         profilepicView.clipsToBounds = true
-        userNameLabel.text = tweet.user?["name"]! as! String?
+        userNameLabel.setTitle(tweet.user?["name"]! as! String?, for: .normal)
         handleLabel.text = "@" + (tweet.user?["screen_name"]  as! String?)!
         
         tweetTextLabel.text = tweet.text!
@@ -39,14 +39,16 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tweetIdentifier"{
+            let vc = segue.destination as! TweetUserViewController
+            vc.tweet = tweet
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        }
     }
-    */
-
 }

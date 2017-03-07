@@ -21,6 +21,8 @@ class Tweet: NSObject {
     var current_user_retweet: Tweet?
     var retweeted_status: Tweet?
     var tweetID: Int
+    var headerURL: URL?
+    var headerURLString: String?
     
     init(dictionary: NSDictionary){
         text = dictionary["text"] as? String
@@ -58,6 +60,15 @@ class Tweet: NSObject {
             retweeted_status = Tweet(dictionary: retweeted_status_dict!)
         } else {
             retweeted_status = nil
+        }
+        headerURLString = user?["profile_banner_url"] as? String
+        if headerURLString != nil {
+            headerURLString?.append("/600x200")
+        } else {
+            headerURLString = dictionary["profile_background_image_url_https"] as? String
+        }
+        if let headerURLString = headerURLString {
+            headerURL = URL(string: headerURLString)
         }
     }
     
