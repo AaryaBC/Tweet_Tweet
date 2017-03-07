@@ -17,6 +17,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 172, blue: 237, alpha: 1.0)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 150
@@ -49,8 +50,21 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         if let timestamp = tweet.timeStamp {
             cell.tweetTime.text = TwitterClient.tweetTimeFormatted(timestamp: timestamp)
         }
+        if (tweet.retweeted)!{
+            cell.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon-green"), for: UIControlState.normal)
+        }
+        else{
+            cell.retweetButton.setImage(#imageLiteral(resourceName: "retweet-icon"), for: UIControlState.normal)
+        }
+        if (tweet.favorited)!{
+            cell.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon-red"), for: UIControlState.normal)
+        }
+        else {
+            cell.favoriteButton.setImage(#imageLiteral(resourceName: "favor-icon"), for: UIControlState.normal)
+        }
         cell.favoriteCountLabel.text = "\(tweet.favoritesCount)"
         cell.retweetCountLabel.text = "\(tweet.retweetCount)"
+        
         return cell
     }
     
@@ -131,5 +145,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func onLogoutButton(_ sender: Any) {
         TwitterClient.sharedInstance?.logout()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tweetsToDetailSegue" {
+            let cell = sender! as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let tweet = self.tweets[indexPath!.row]
+            
+            let detailVC = segue.destination as! DetailViewController
+            detailVC.tweet = tweet
+            
+        }
     }
 }

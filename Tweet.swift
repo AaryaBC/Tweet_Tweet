@@ -20,6 +20,7 @@ class Tweet: NSObject {
     var id_str: String?
     var current_user_retweet: Tweet?
     var retweeted_status: Tweet?
+    var tweetID: Int
     
     init(dictionary: NSDictionary){
         text = dictionary["text"] as? String
@@ -39,6 +40,7 @@ class Tweet: NSObject {
         } else {
             self.profileImageURL = nil
         }
+        tweetID = dictionary["id"] as! Int
         self.retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         self.favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
         self.favorited = dictionary["favorited"] as? Bool
