@@ -161,6 +161,26 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func sendTweet(text: String, callBack: @escaping (_ response: Tweet?, _ error: Error? ) -> Void){
+        guard let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else{
+            callBack(nil, nil)
+            return
+        }
+        let urlString = "/1.1/statuses/update.json?status=" + encodedText
+        post(urlString, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response:Any?) in
+            if let tweetDict = response as? [String: Any]{
+                let tweet = Tweet(dictionary: tweetDict as NSDictionary)
+                //User.currentUser?.timeline?.insert(tweet, at: 0)
+                callBack(tweet, nil)
+            } else {
+                callBack(nil, nil)
+            }
+        }, failure: { (task: URLSessionDataTask?, error:Error) in
+            print(error.localizedDescription)
+            callBack(nil, error)
+        })
+    }
+    
     func userTimeline(_ settings: String, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         let params = "?screen_name=" + settings
         

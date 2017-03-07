@@ -87,4 +87,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "userTweetCell", for: indexPath) as! userTweetCell
         cell.tweet = tweets[indexPath.row]
         return cell
-    }}
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "compose"{
+            let secondController = segue.destination as! ComposeViewController
+            secondController.tweets = User._currentUser
+        }
+    }
+}
